@@ -23,8 +23,8 @@ Options:
     -d, --deck                  The anki deck to import the notes
     -n, --note-type             The anki note type to import the notes
     -o, --output OUTPUT         The OUTPUT file to be imported by Anki 
-    -p, --guid-prefix           A prefix to build a guid note identifier 
-    -t, --tag                   A Tag to all Notes of INPUT. Can be repeated 
+    -p, --guid-prefix           A prefix to build the guid of all notes note of INPUT
+    -t, --tag                   A Tag to all notes of INPUT. Can be repeated 
 
 INPUT should be a valid markdown file with the following structure:
 
@@ -49,14 +49,14 @@ is required in the Anki import UI.
 
 TAG is a tag to be applied to all notes of INPUT. The option can be repeated.
 
-GUID-PREFIX is a prefix for the "guid" field of the OUTPUT file.  The "guid"
-field is unique for each note of INPUT. mankidown will contruct a guid for each
-note with the  concatenation of the GUID_PREFIX and a sequence integer.  Anki
-uses the "guid" to find duplicates and update those notes preserving schedule
-times. GUID-PREFIX defaults to OUTPUT.
+GUID-PREFIX is a prefix of the "guid" field for each note in the OUTPUT file.
+The "guid" field is unique for each note of INPUT. mankidown will contruct a
+guid for each note with the  concatenation of the GUID-PREFIX and a sequence
+integer. Anki uses the "guid" to find duplicates and update those notes
+preserving schedule times. GUID-PREFIX defaults to OUTPUT.
 
 Examples:
-    $ mankidown notes.md # will write notes.txt, which can be imported in Anki
+    $ mankidown mynotes.md # will write mynotes.txt, which can be imported in Anki
     $ mankidown --deck mydeck -n mytype -p go -t go -t anki mynotes.md`
 
 type multiFlag []string
