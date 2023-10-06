@@ -2,13 +2,13 @@ package mankidown
 
 import (
 	"bytes"
-	"strings"
 	"fmt"
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/text"
 	"strconv"
+	"strings"
 )
 
 type Parser struct {
@@ -25,7 +25,7 @@ type Field struct {
 type Note struct {
 	id     string
 	tags   []string
-	fields []Field 
+	fields []Field
 }
 
 func newNote() *Note {
@@ -52,26 +52,26 @@ func (n *Note) addField(f Field) {
 }
 
 func (n *Note) numFieds() int {
-    return len(n.fields)
+	return len(n.fields)
 }
 
 func (n *Note) addTags(tags string) {
 
-    words := strings.Fields(tags)
+	words := strings.Fields(tags)
 
-    for _, w := range words {
-	     n.tags = append(n.tags, w)
-    }
+	for _, w := range words {
+		n.tags = append(n.tags, w)
+	}
 }
 
 func (n *Note) addId(id string) {
 	n.id = id
 }
 
-// A Notes contains the parsed notes elements 
+// A Notes contains the parsed notes elements
 type Notes struct {
 	Notes      []*Note
-	fieldNames []string 
+	fieldNames []string
 }
 
 func newNotes() *Notes {
@@ -84,54 +84,53 @@ func (n *Notes) FieldNames() []string {
 	return n.fieldNames
 }
 
-
 func (n *Notes) addNote(nt *Note) error {
-    err := n.validateNote(nt)
-    if err != nil {
-        return err
-    }
+	err := n.validateNote(nt)
+	if err != nil {
+		return err
+	}
 
 	n.Notes = append(n.Notes, nt)
-    return nil
+	return nil
 }
 
 func (n *Notes) validateNote(nt *Note) error {
 
-    if n.numFieds() != nt.numFieds() {
-        return fmt.Errorf("Invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
-    }
+	if n.numFieds() != nt.numFieds() {
+		return fmt.Errorf("Invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
+	}
 
-    return nil
+	return nil
 }
 
 func (n *Notes) numFieds() int {
-    return len(n.fieldNames)
+	return len(n.fieldNames)
 }
 
 func (n *Notes) numNotes() int {
-    return len(n.Notes)
+	return len(n.Notes)
 }
 
-func (ns *Notes) addFieldName(fieldName string) error{
+func (ns *Notes) addFieldName(fieldName string) error {
 
-    // after first note:
-    if ns.numNotes()>0 {
-        if "" != fieldName {
-            return fmt.Errorf("Invalid presence of fields (%q) in note %d.", fieldName, ns.numNotes()+1)
-        } else {
-            return nil
-        }
-    }
+	// after first note:
+	if ns.numNotes() > 0 {
+		if "" != fieldName {
+			return fmt.Errorf("Invalid presence of fields (%q) in note %d.", fieldName, ns.numNotes()+1)
+		} else {
+			return nil
+		}
+	}
 
-    // first note: 
+	// first note:
 	for _, fn := range ns.fieldNames {
 		if fn == fieldName {
-            return fmt.Errorf("Note %d: Field %q already exist", ns.numNotes()+1, fieldName)
+			return fmt.Errorf("Note %d: Field %q already exist", ns.numNotes()+1, fieldName)
 		}
 	}
 
 	ns.fieldNames = append(ns.fieldNames, fieldName)
-    return nil
+	return nil
 }
 
 func (p *Parser) Parse(markdown []byte) (*Notes, error) {
@@ -143,8 +142,8 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 	nt := newNote()
 	notes := newNotes()
 
-    err := ast.Walk(root, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
-        var err error
+	err := ast.Walk(root, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
+		var err error
 
 		if !entering {
 
@@ -154,11 +153,11 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 
 			if isNoteEnd(n) {
 				err = notes.addNote(nt)
-                if err != nil {
-			        return ast.WalkStop, err
-                }
+				if err != nil {
+					return ast.WalkStop, err
+				}
 			}
-            
+
 			return ast.WalkSkipChildren, nil
 		}
 
@@ -171,30 +170,30 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 		if isNoteStart(n) {
 			nt = newNote()
 
-            // Tags are defined in the H1 header
-            if tags:= string(n.Text(markdown)); tags != "" {
-                nt.addTags(tags)
-            }
+			// Tags are defined in the H1 header
+			if tags := string(n.Text(markdown)); tags != "" {
+				nt.addTags(tags)
+			}
 
-            // note guid suffix
-            noteNum := len(notes.Notes) + 1
-            nt.addId(strconv.Itoa(noteNum))
+			// note guid suffix
+			noteNum := len(notes.Notes) + 1
+			nt.addId(strconv.Itoa(noteNum))
 
 			return ast.WalkSkipChildren, nil
 		}
 
 		if isFieldStart(n) {
-            fieldText := string(n.Text(markdown))
-            err = notes.addFieldName(fieldText)
-            if err != nil {
-			    return ast.WalkStop, err
-            }
+			fieldText := string(n.Text(markdown))
+			err = notes.addFieldName(fieldText)
+			if err != nil {
+				return ast.WalkStop, err
+			}
 
 			fieldBuf = bytes.Buffer{}
 			return ast.WalkSkipChildren, nil
 		}
 
-		// Render the node contents 
+		// Render the node contents
 		if err = p.mdp.Renderer().Render(&fieldBuf, markdown, n); err != nil {
 			return ast.WalkStop, fmt.Errorf("Render error %v", err)
 		}
@@ -202,9 +201,9 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 		return ast.WalkSkipChildren, nil
 	})
 
-    if err != nil {
-        return nil, err
-    }
+	if err != nil {
+		return nil, err
+	}
 
 	return notes, nil
 }

@@ -62,7 +62,7 @@ Examples:
 type multiFlag []string
 
 func (f *multiFlag) String() string {
-    return fmt.Sprint(*f) 
+	return fmt.Sprint(*f)
 }
 
 func (f *multiFlag) Set(value string) error {

@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Anki header fields. 
-// See https://docs.ankiweb.net/importing/text-files.html#file-headers 
+// Anki header fields.
+// See https://docs.ankiweb.net/importing/text-files.html#file-headers
 const (
 	HeaderSeparator  = "#separator:Pipe"
 	HeaderHtml       = "#html:true"
@@ -20,11 +20,11 @@ const (
 	separatorChar = `|`
 
 	guidColumnName = "Mankidown-Guid"
-	tagsColumnName = "Tags" 
+	tagsColumnName = "Tags"
 )
 
 type Config struct {
-	GuidPrefix   string 
+	GuidPrefix string
 	InFileName string
 	Deck       string
 	NoteType   string
