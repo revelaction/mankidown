@@ -17,14 +17,14 @@ import (
 const outFileExt = ".txt"
 
 const usage = `Usage:
-    mankidown [-d DECK] [-n NOTE-TYPE] [-n NOTE-PREFIX] [-t TAG] [-o OUTPUT] INPUT
+    mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
 
 Options:
     -d, --deck                  The anki deck to import the notes
     -n, --note-type             The anki note type to import the notes
     -o, --output OUTPUT         The OUTPUT file to be imported by Anki 
-    -p, --note-prefix           The note prefix to build a unique note identifier 
-    -t, --tag                   A Anki Tag to all Notes of INPUT. Can be repeated 
+    -p, --guid-prefix           A prefix to build a guid note identifier 
+    -t, --tag                   A Tag to all Notes of INPUT. Can be repeated 
 
 INPUT should be a valid markdown file with the following structure:
 
@@ -49,11 +49,11 @@ is required in the Anki import UI.
 
 TAG is a tag to be applied to all notes of INPUT. The option can be repeated.
 
-NOTE-PREFIX is a custom prefix for the "guid" field of the OUTPUT file.  The "guid"
-field is unique nor each note of INPUT. mankidown will contruct a guid with the
-concatenation of the NOTE_PREFIX and a sequence integer. 
-Anki uses the "guid" to find duplicates and update those notes
-preserving schedule times. NOTE-PREFIX defaults to OUTPUT.
+GUID-PREFIX is a prefix for the "guid" field of the OUTPUT file.  The "guid"
+field is unique for each note of INPUT. mankidown will contruct a guid for each
+note with the  concatenation of the GUID_PREFIX and a sequence integer.  Anki
+uses the "guid" to find duplicates and update those notes preserving schedule
+times. GUID-PREFIX defaults to OUTPUT.
 
 Examples:
     $ mankidown notes.md # will write notes.txt, which can be imported in Anki
@@ -75,7 +75,7 @@ func main() {
 	flag.Usage = func() { fmt.Fprintf(os.Stderr, "%s\n", usage) }
 
 	conf := new(mankidown.Config)
-	var outFlag, notePrefix string
+	var outFlag, guidPrefix string
 	var tagFlags multiFlag
 
 	flag.StringVar(&outFlag, "o", "", "output to `FILE` (default stdout)")
@@ -84,8 +84,8 @@ func main() {
 	flag.StringVar(&conf.Deck, "deck", "", "Export to the Anki Deck")
 	flag.StringVar(&conf.NoteType, "n", "", "Export to the Anki Note type")
 	flag.StringVar(&conf.NoteType, "note-type", "", "Export to the Anki Note type")
-	flag.StringVar(&notePrefix, "p", "", "Export with the note prefix")
-	flag.StringVar(&notePrefix, "note-prefix", "", "Export with the note prefix")
+	flag.StringVar(&guidPrefix, "p", "", "Export with the note prefix")
+	flag.StringVar(&guidPrefix, "guid-prefix", "", "Export with the note prefix")
 	flag.Var(&tagFlags, "t", "Add tag")
 	flag.Var(&tagFlags, "tags", "Add tag")
 	flag.Parse()
@@ -123,11 +123,10 @@ func main() {
 		outFile = strings.TrimSuffix(baseName, filepath.Ext(baseName)) + outFileExt
 	}
 
-	if notePrefix != "" {
-		// TODO IdPrefix name
-		conf.IdPrefix = notePrefix
+	if guidPrefix != "" {
+		conf.GuidPrefix = guidPrefix
 	} else {
-		conf.IdPrefix = outFile
+		conf.GuidPrefix = outFile
 	}
 
 	var out io.Writer
