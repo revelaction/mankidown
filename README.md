@@ -47,9 +47,9 @@ Write a markdown file f.ex. `mynotes.md` with notes for the Anki `Basic` Note Ty
 
 The markdown file above will create two anki cards for the `Basic` note type.
 
-The structure of the file is simple:
+The structure of the markdown file is simple:
 
-- Each H1 Heading element is imported as an Anki card
+- Each H1 Heading element is imported as an Anki note
 - H1 Heading elements can contain (in the header line) anki tags separated by space.  
 - H2 Heading elements are imported as a note type `field`. 
 - The H2 Headings in the first note should contain a word indicating the Anki field to be mapped.
