@@ -8,7 +8,7 @@ If your system has a supported version of Go, you can build from source.
 
 # Features 
 
-- `mankidown` output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html#file-headers). To import the output file, click the File menu and then "Import".
+- `mankidown` output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html). To import the output file, click the File menu and then "Import".
 - `mankidown` supports the [Anki text file headers](https://docs.ankiweb.net/importing/text-files.html#file-headers) to simplify the import process.
 - `mankidown` renders the markdown contents as html.
 - `mankidown` supports per file and per note [Anki tags](https://docs.ankiweb.net/importing/text-files.html#adding-tags).
@@ -18,7 +18,7 @@ If your system has a supported version of Go, you can build from source.
 
 ## Write cards in markdown
 
-Write a markdown file `mynotes.md` with notes for the Anki `Basic Note Type` (with `Front` and `Back` fields):
+Write a markdown file f.ex. `mynotes.md` with notes for the Anki `Basic` Note Type (with `Front` and `Back` fields):
 
     # anki mandidown
     ## Front  
@@ -61,20 +61,20 @@ The structure of the file is simple:
 ```
 mankidown --deck mydeck -n mytype  mynotes.md
 ```
-## import the output file
+
+This will produce a `mynotes.txt` file that can be imported in Anki.
+
+## Import the output file
 
 In the Anki app, click the File menu and then "Import". For the desktop:
 
+# Duplicated cards, update
 
-
-## Duplicated cards, update
-
-## media
+# Media
 
 - All content of the markdown is parsed as html. You can use images and sound
 
-
-## command line options
+# command line options
 ```
 mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
 
