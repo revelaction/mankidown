@@ -6,6 +6,14 @@ If your system has a supported version of Go, you can build from source.
 
     go install github.com/revelaction/mankidown/cmd@latest
 
+# Features 
+
+- `mankidown` output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html#file-headers). To import the output file, click the File menu and then "Import".
+- `mankidown` supports the [Anki text file headers](https://docs.ankiweb.net/importing/text-files.html#file-headers) to simplify the import process.
+- `mankidown` renders the markdown contents as html.
+- `mankidown` supports per file and per note [Anki tags](https://docs.ankiweb.net/importing/text-files.html#adding-tags).
+- `mankidown` supports [custom Anki notes types](https://docs.ankiweb.net/editing.html#adding-a-note-type). Each `note type field` is mapped to a markdown H2 Heading element.
+
 # Usage
 
 ```
