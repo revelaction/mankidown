@@ -59,7 +59,7 @@ The structure of the file is simple:
 ## Run mankidown
 
 ```
-mankidown --deck mydeck -n mytype  mynotes.md
+mankidown --deck mydeck -n Basic mynotes.md
 ```
 
 This will produce a `mynotes.txt` file that can be imported in Anki.
@@ -67,6 +67,8 @@ This will produce a `mynotes.txt` file that can be imported in Anki.
 ## Import the output file
 
 In the Anki app, click the File menu and then "Import". For the desktop:
+
+![anki import](data/anki-import.png)
 
 # Duplicated cards, update
 
