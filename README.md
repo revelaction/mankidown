@@ -2,7 +2,7 @@
 
 # Installation
 
-    If your system has a supported version of Go, you can build from source.
+If your system has a supported version of Go, you can build from source.
 
     go install github.com/revelaction/mankidown/cmd@latest
 
