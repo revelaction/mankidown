@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mankidown-binaries
-          path: mankidown
+          path: mankidown-*
   upload:
     name: Upload release binaries
     if: github.event_name == 'release'
