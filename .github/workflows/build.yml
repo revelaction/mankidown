@@ -41,7 +41,7 @@ jobs:
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: mandidown-binaries
+          name: mankidown-binaries
           path: mankidown
   upload:
     name: Upload release binaries
