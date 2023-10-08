@@ -2,6 +2,8 @@
 
 # Installation
 
+On Linux you can use the [pre-built binaries](https://github.com/revelaction/mankidown/releases/) 
+
 If your system has a supported version of Go, you can build from source.
 
     go install github.com/revelaction/mankidown/cmd@latest
