@@ -52,13 +52,15 @@ The markdown file above will create two anki cards for the `Basic` note type.
 The structure of the markdown file is simple:
 
 - Each H1 Heading element is imported as an Anki note
-- H1 Heading elements can contain (in the header line) anki tags separated by space.  
-- H2 Heading elements are imported as a note type `field`. 
-- The H2 Headings in the first note should contain a word indicating the Anki field to be mapped.
-- The H2 Headings in the rest of the notes can not contain words. Its Anki
+- H1 Heading elements can contain (in the header line) Anki tags separated by space.  
+- H2 Heading elements are imported as Anki note type fields. 
+- The H2 Headings of the first note should contain the Anki field to be mapped.
+- The H2 Headings of the rest of the notes should not contain words. Its Anki
   field is derived from the first note.
 
 ## Run mankidown
+
+Run mankidown indicating the Anki note type, the deck, and optional tags:
 
 ```
 mankidown --deck mydeck -n Basic mynotes.md
@@ -68,7 +70,7 @@ This will produce a `mynotes.txt` file that can be imported in Anki.
 
 ## Import the output file
 
-In the Anki app, click the File menu and then "Import". For the desktop:
+In the Anki app, click the File menu and then "Import". For the desktop app:
 
 ![anki import](data/anki-import.png)
 
