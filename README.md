@@ -70,11 +70,23 @@ In the Anki app, click the File menu and then "Import". For the desktop:
 
 ![anki import](data/anki-import.png)
 
-# Duplicated cards, update
+# Update cards, duplicates
 
 # Media
 
-- All content of the markdown is parsed as html. You can use images and sound
+## Images
+
+Put the image files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations).
+In the markdown file, use the standard image format without paths:
+
+    ![myimage](myimage.jpg)
+
+## Audio
+
+Put the audio files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations).
+In the markdown file, use the standard audio format without paths:
+
+    [sound:mysound.mp3]
 
 # command line options
 ```
