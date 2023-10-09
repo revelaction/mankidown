@@ -25,6 +25,7 @@ Options:
     -o, --output OUTPUT         The OUTPUT file to be imported by Anki 
     -p, --guid-prefix           A prefix to build the guid of all notes note of INPUT
     -t, --tag                   A Tag to all notes of INPUT. Can be repeated 
+        --version               The version 
 
 INPUT should be a valid markdown file with the following structure:
 
@@ -70,6 +71,9 @@ func (f *multiFlag) Set(value string) error {
 	return nil
 }
 
+// Version can be set at link time 
+var Version string
+
 func main() {
 
 	flag.Usage = func() { fmt.Fprintf(os.Stderr, "%s\n", usage) }
@@ -77,7 +81,9 @@ func main() {
 	conf := new(mankidown.Config)
 	var outFlag, guidPrefix string
 	var tagFlags multiFlag
+	var versionFlag bool
 
+    flag.BoolVar(&versionFlag, "version", false, "print the version")
 	flag.StringVar(&outFlag, "o", "", "output to `FILE` (default stdout)")
 	flag.StringVar(&outFlag, "output", "", "output to `FILE` (default stdout)")
 	flag.StringVar(&conf.Deck, "d", "", "Export to the Anki Deck")
@@ -89,6 +95,16 @@ func main() {
 	flag.Var(&tagFlags, "t", "Add tag")
 	flag.Var(&tagFlags, "tags", "Add tag")
 	flag.Parse()
+
+    if versionFlag {
+        if Version != "" {
+            fmt.Println(Version)
+            return
+        }
+        fmt.Println("(unknown)")
+        return
+    }
+
 
 	if flag.NArg() == 0 {
 		flag.Usage()

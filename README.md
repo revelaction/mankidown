@@ -104,6 +104,7 @@ Options:
     -o, --output OUTPUT         The OUTPUT file to be imported by Anki 
     -p, --guid-prefix           A prefix to build the guid of all notes note of INPUT
     -t, --tag                   A Tag to all notes of INPUT. Can be repeated 
+        --version               The version 
 
 INPUT should be a valid markdown file with the following structure:
 
