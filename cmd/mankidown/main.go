@@ -71,7 +71,7 @@ func (f *multiFlag) Set(value string) error {
 	return nil
 }
 
-// Version can be set at link time 
+// Version can be set at link time
 var Version string
 
 func main() {
@@ -83,7 +83,7 @@ func main() {
 	var tagFlags multiFlag
 	var versionFlag bool
 
-    flag.BoolVar(&versionFlag, "version", false, "print the version")
+	flag.BoolVar(&versionFlag, "version", false, "print the version")
 	flag.StringVar(&outFlag, "o", "", "output to `FILE` (default stdout)")
 	flag.StringVar(&outFlag, "output", "", "output to `FILE` (default stdout)")
 	flag.StringVar(&conf.Deck, "d", "", "Export to the Anki Deck")
@@ -96,15 +96,14 @@ func main() {
 	flag.Var(&tagFlags, "tags", "Add tag")
 	flag.Parse()
 
-    if versionFlag {
-        if Version != "" {
-            fmt.Println(Version)
-            return
-        }
-        fmt.Println("(unknown)")
-        return
-    }
-
+	if versionFlag {
+		if Version != "" {
+			fmt.Println(Version)
+			return
+		}
+		fmt.Println("(unknown)")
+		return
+	}
 
 	if flag.NArg() == 0 {
 		flag.Usage()
