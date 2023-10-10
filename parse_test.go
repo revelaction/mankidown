@@ -150,6 +150,6 @@ Text`)
 
 	t.Logf("Error is %q", err)
 	if err == nil {
-		t.Errorf("\ngot Error %s\nwant nil", err)
+		t.Errorf("\ngot %s\nwant Error", err)
 	}
 }
