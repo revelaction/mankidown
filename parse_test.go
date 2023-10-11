@@ -1,13 +1,13 @@
 package mankidown_test
 
 import (
-	"testing"
 	"github.com/revelaction/mankidown"
+	"testing"
 )
 
 func TestParseValid(t *testing.T) {
 
-    good  := []byte(`# note1 tag1 
+	good := []byte(`# note1 tag1 
 ## Field1  
 
 First note has two fields, Field1 and Field2
@@ -33,9 +33,8 @@ Text`)
 	}
 }
 
-
 func TestParseH2WordsAfterFirstNote(t *testing.T) {
-    withH2Word  := []byte(`# note1 tag1 
+	withH2Word := []byte(`# note1 tag1 
 ## Front  
 
 text
@@ -63,7 +62,7 @@ text 2`)
 }
 
 func TestParseNoteWithRepeatedField(t *testing.T) {
-    withRepeatedField  := []byte(`
+	withRepeatedField := []byte(`
 # note1 tag1 
 ## Front  
 
@@ -89,7 +88,7 @@ text
 
 func TestParseNoteWithDifferentNumberOfFields(t *testing.T) {
 
-    withDifferentNumberOfFields  := []byte(`
+	withDifferentNumberOfFields := []byte(`
 # note1 tag1 
 ## Front  
 
@@ -125,7 +124,7 @@ second note has 3 fields
 // Text after H1 before H2 are allowed
 func TestParseContentBetweenH1AndH2(t *testing.T) {
 
-    withTextBetween  := []byte(`# note1 tag1 
+	withTextBetween := []byte(`# note1 tag1 
 
 some text between H1 and H2
 
@@ -149,7 +148,6 @@ Text`)
 	md := mankidown.NewParser()
 	_, err := md.Parse(withTextBetween)
 
-	//t.Logf("Error is %q", err)
 	if err != nil {
 		t.Errorf("\ngot %s\nwant nil", err)
 	}
@@ -158,7 +156,7 @@ Text`)
 // first note should define all note fields, shoudl no have empty H2
 func TestParseNoFieldInFirstNoteH2(t *testing.T) {
 
-    withoutFields  := []byte(`# note1 tag1 
+	withoutFields := []byte(`# note1 tag1
 ## 
 
 First note has two fields, Field1 and Field2
@@ -185,16 +183,81 @@ Text`)
 	}
 }
 
-func TestNoNtes(t *testing.T) {
+func TestParseNoFieldsInNote(t *testing.T) {
 
-    withoutNotes  := []byte(`# tag1 tag2
+	withoutFields := []byte(`# tag1 tag2
+`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutFields)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestParseNoNoteDeclaration(t *testing.T) {
+
+	withoutNote := []byte(`##
+`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutNote)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestParseNoNoteBeforeFields(t *testing.T) {
+
+	withoutNote := []byte(`## field1
+
+some text
+
+## field2
+
+text
+
+##
+`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutNote)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestParseNoNoteAndFieldDeclarations(t *testing.T) {
+
+	withoutNotes := []byte(`###
 `)
 
 	md := mankidown.NewParser()
 	_, err := md.Parse(withoutNotes)
 
-	//t.Logf("Error is %q", err)
-	if err != nil {
-		t.Errorf("\ngot %s\nwant nil", err)
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestParseNoFieldsAfterNote(t *testing.T) {
+
+	withoutFields := []byte(`#
+###
+`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutFields)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
 	}
 }

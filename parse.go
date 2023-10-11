@@ -96,8 +96,16 @@ func (n *Notes) addNote(nt *Note) error {
 
 func (n *Notes) validateNote(nt *Note) error {
 
+	if 0 == nt.numFieds() {
+		return fmt.Errorf("No fields in note %d", n.numNotes()+1)
+	}
+
 	if n.numFieds() != nt.numFieds() {
 		return fmt.Errorf("Invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
+	}
+
+	if "" == nt.Id() {
+		return fmt.Errorf("No notes declared at the start by parsing note %d", n.numNotes()+1)
 	}
 
 	return nil
@@ -123,9 +131,9 @@ func (ns *Notes) addFieldName(fieldName string) error {
 	}
 
 	// first note:
-    if "" == fieldName {
-        return fmt.Errorf("Missing fields in note %d", ns.numNotes()+1)
-    } 
+	if "" == fieldName {
+		return fmt.Errorf("Missing fields in note %d", ns.numNotes()+1)
+	}
 
 	for _, fn := range ns.fieldNames {
 		if fn == fieldName {
@@ -142,7 +150,7 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 	root := p.mdp.Parser().Parse(text.NewReader(markdown))
 
 	var fieldBuf bytes.Buffer
-    var insideNoteField bool = false
+	var insideNoteField bool = false
 
 	nt := newNote()
 	notes := newNotes()
@@ -154,7 +162,7 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 
 			if isFieldEnd(n, insideNoteField) {
 				nt.addField(Field{Html: fieldBuf.String()})
-                insideNoteField = false
+				insideNoteField = false
 			}
 
 			if isNoteEnd(n) {
@@ -162,9 +170,8 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 				if err != nil {
 					return ast.WalkStop, err
 				}
-                insideNoteField = false
-			}
 
+			}
 
 			return ast.WalkSkipChildren, nil
 		}
@@ -187,7 +194,6 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 			noteNum := len(notes.Notes) + 1
 			nt.addId(strconv.Itoa(noteNum))
 
-
 			return ast.WalkSkipChildren, nil
 		}
 
@@ -200,15 +206,15 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 
 			fieldBuf = bytes.Buffer{}
 
-            insideNoteField = true
+			insideNoteField = true
 
 			return ast.WalkSkipChildren, nil
 		}
 
-        // Render the node contents
-        if err = p.mdp.Renderer().Render(&fieldBuf, markdown, n); err != nil {
-            return ast.WalkStop, fmt.Errorf("Render error %v", err)
-        }
+		// Render the node contents
+		if err = p.mdp.Renderer().Render(&fieldBuf, markdown, n); err != nil {
+			return ast.WalkStop, fmt.Errorf("Render error %v", err)
+		}
 
 		return ast.WalkSkipChildren, nil
 	})
@@ -287,10 +293,10 @@ func isFieldStart(n ast.Node) bool {
 // - the following is Document final (not entering)
 func isFieldEnd(n ast.Node, inside bool) bool {
 
-    if !inside{
-        return false
-    }
-    
+	if !inside {
+		return false
+	}
+
 	_, ok := n.(*ast.Document)
 	if ok {
 		return true
