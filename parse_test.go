@@ -122,6 +122,7 @@ second note has 3 fields
 	}
 }
 
+// Text after H1 before H2 are allowed
 func TestParseContentBetweenH1AndH2(t *testing.T) {
 
     withTextBetween  := []byte(`# note1 tag1 
@@ -148,8 +149,52 @@ Text`)
 	md := mankidown.NewParser()
 	_, err := md.Parse(withTextBetween)
 
+	//t.Logf("Error is %q", err)
+	if err != nil {
+		t.Errorf("\ngot %s\nwant nil", err)
+	}
+}
+
+// first note should define all note fields, shoudl no have empty H2
+func TestParseNoFieldInFirstNoteH2(t *testing.T) {
+
+    withoutFields  := []byte(`# note1 tag1 
+## 
+
+First note has two fields, Field1 and Field2
+
+## 
+
+text
+
+# note2 tag2
+## 
+
+text
+
+## 
+
+Text`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutFields)
+
 	t.Logf("Error is %q", err)
 	if err == nil {
 		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestNoNtes(t *testing.T) {
+
+    withoutNotes  := []byte(`# tag1 tag2
+`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(withoutNotes)
+
+	//t.Logf("Error is %q", err)
+	if err != nil {
+		t.Errorf("\ngot %s\nwant nil", err)
 	}
 }
