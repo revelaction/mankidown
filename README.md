@@ -77,6 +77,12 @@ In the Anki app, click the File menu and then "Import". For the desktop app:
 
 ![anki import](data/anki-import.png)
 
+# Examples
+
+## Cloze
+
+## Custom
+
 # Update cards, duplicates
 
 # Media
