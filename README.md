@@ -23,7 +23,7 @@ go install github.com/revelaction/mankidown/cmd@latest
 
 # Usage
 
-## 1) Write cards in markdown
+## 1) Write notes in markdown
 
 Create a markdown file called `mynotes.md` with your favorite editor. The structure of the markdown file is the same regardless of the anki note type. 
 In this example, we write two notes for the anki `Basic` Note Type. This note type is the anki default and has two note fields: `Front` and `Back`.
@@ -85,6 +85,31 @@ In the Anki app, click the File menu and then "Import". For the desktop app:
 # Examples
 
 ## Cloze
+
+mankidown support any kind of anki note type. There is an [example markdown Cloze file](data/examples/cloze.md) in the `data/examples` directory
+The anki `Cloze` type has two fields: `Text` and `Extra`
+
+To write a `Cloze` note use use `{{c1::<hidden response>` in your markdown document in the `Text` H2 Heading. For example:
+
+````markdown
+...
+# Text
+##
+Which mankidown flag below should you use to indicate the note type (in this case Cloze):
+...
+
+```console
+$ mankidown --deck mydeck --{{c1::note-type}} Cloze mynotes.md
+```
+````
+
+You can run the Cloze example file like this:
+
+```console
+ $ mankidown -d myDeck -n Cloze data/examples/cloze.md 
+```
+
+and import the .txt fiel in anki.
 
 ## Custom
 
