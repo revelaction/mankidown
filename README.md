@@ -89,7 +89,7 @@ In the Anki app, click the File menu and then "Import". For the desktop app:
 There is an [example markdown Cloze file](data/examples/cloze.md) in the `data/examples` directory.
 The anki `Cloze` type has two fields: [`Text` and `Extra`](https://docs.ankiweb.net/editing.html#cloze-deletion)
 
-To write a `Cloze` note just use the anki convention `{{c1::<hidden response>` in your markdown document in the `Text` H2 Heading. For example:
+To write a `Cloze` note just use the anki convention `{{c1::<hidden response>}}` after the `Text` H2 Heading. For example:
 
 ````markdown
 ...
@@ -131,7 +131,7 @@ In the markdown file, use the standard audio format without paths:
 
     [sound:mysound.mp3]
 
-# command line options
+# Command line options
 ```console
 mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
 
