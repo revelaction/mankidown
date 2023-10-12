@@ -23,9 +23,10 @@ go install github.com/revelaction/mankidown/cmd@latest
 
 # Usage
 
-## Write cards in markdown
+## 1) Write cards in markdown
 
-Write a markdown file f.ex. `mynotes.md` with notes for the Anki `Basic` Note Type (with `Front` and `Back` fields):
+Create a markdown file called `mynotes.md` with your favorite editor. The structure of the markdown file is the same regardless of the anki note type. 
+In this example, we write two notes for the anki `Basic` Note Type. This note type is the anki default and has two note fields: `Front` and `Back`.
 
 ````markdown
 # anki mandidown
@@ -59,13 +60,13 @@ The markdown file above will create two anki cards for the `Basic` note type.
 The structure of the markdown file is simple:
 
 - Each H1 Heading element is imported as an Anki note
-- H1 Heading elements can contain (in the header line) Anki tags separated by space.  
+- H1 Heading elements can contain (in the header line) Anki tags separated by space. Anki will apply those tags to the note. 
 - H2 Heading elements are imported as Anki note type fields. 
-- The H2 Headings of the first note should contain the Anki field to be mapped.
+- The H2 Headings of the first note SHOULD contain the Anki field to be mapped.
 - The H2 Headings of the rest of the notes should not contain words. Its Anki
   field is derived from the first note.
 
-## Run mankidown
+## 2) Run mankidown
 
 Run mankidown indicating the Anki note type, the deck, and optional tags:
 
@@ -75,7 +76,7 @@ mankidown --deck mydeck -n Basic mynotes.md
 
 This will produce a `mynotes.txt` file that can be imported in Anki.
 
-## Import the output file
+## 3) Import the output file in anki
 
 In the Anki app, click the File menu and then "Import". For the desktop app:
 
