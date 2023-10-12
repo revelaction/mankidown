@@ -93,10 +93,9 @@ To write a `Cloze` note just use the anki convention `{{c1::<hidden response>}}`
 
 ````markdown
 ...
-# Text
-##
+# 
+## Text
 Which mankidown flag below should you use to indicate the note type (in this case Cloze):
-...
 
 ```console
 $ mankidown --deck mydeck --{{c1::note-type}} Cloze mynotes.md
@@ -109,7 +108,7 @@ You can run the Cloze example file like this:
  $ mankidown -d myDeck -n Cloze data/examples/cloze.md 
 ```
 
-and import the .txt fiel in anki.
+and import the .txt file in anki.
 
 ## Custom
 
