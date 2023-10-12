@@ -27,30 +27,32 @@ go install github.com/revelaction/mankidown/cmd@latest
 
 Write a markdown file f.ex. `mynotes.md` with notes for the Anki `Basic` Note Type (with `Front` and `Back` fields):
 
-    # anki mandidown
-    ## Front  
+````markdown
+# anki mandidown
+## Front  
 
-    What mankidown flag should you use to indicate the `note type`? 
+What mankidown flag should you use to indicate the `note type`? 
 
-    ## Back  
+## Back  
 
-    Use the `-n, --note-type` flag:
-    
-    ```
-     $ mankidown -n Basic mynotes.md 
-    ```
-    # anki mandidown
-    ## 
+Use the `-n, --note-type` flag:
 
-    What mankidown flag shoudl you use indicate the `Deck`? 
+```
+ $ mankidown -n Basic mynotes.md 
+```
+# anki mandidown
+## 
 
-    ## 
+What mankidown flag shoudl you use indicate the `Deck`? 
 
-    Use the `-d, --deck` flag:
-    
-    ```
-     $ mankidown -d myDeck mynotes.md 
-    ```
+## 
+
+Use the `-d, --deck` flag:
+
+```
+ $ mankidown -d myDeck mynotes.md 
+```
+````
 
 The markdown file above will create two anki cards for the `Basic` note type.
 
