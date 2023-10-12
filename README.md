@@ -86,10 +86,10 @@ In the Anki app, click the File menu and then "Import". For the desktop app:
 
 ## Cloze
 
-mankidown support any kind of anki note type. There is an [example markdown Cloze file](data/examples/cloze.md) in the `data/examples` directory
-The anki `Cloze` type has two fields: `Text` and `Extra`
+There is an [example markdown Cloze file](data/examples/cloze.md) in the `data/examples` directory.
+The anki `Cloze` type has two fields: [`Text` and `Extra`](https://docs.ankiweb.net/editing.html#cloze-deletion)
 
-To write a `Cloze` note use use `{{c1::<hidden response>` in your markdown document in the `Text` H2 Heading. For example:
+To write a `Cloze` note just use the anki convention `{{c1::<hidden response>` in your markdown document in the `Text` H2 Heading. For example:
 
 ````markdown
 ...
