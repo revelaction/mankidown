@@ -65,7 +65,7 @@ The structure of the markdown file is simple:
 
 Run mankidown indicating the Anki note type, the deck, and optional tags:
 
-```
+```console
 mankidown --deck mydeck -n Basic mynotes.md
 ```
 
@@ -102,7 +102,7 @@ In the markdown file, use the standard audio format without paths:
     [sound:mysound.mp3]
 
 # command line options
-```
+```console
 mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
 
 Options:
