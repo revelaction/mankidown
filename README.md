@@ -66,6 +66,9 @@ The structure of the markdown file is simple:
 - The H2 Headings of the rest of the notes should not contain words. Its Anki
   field is derived from the first note.
 
+See the [markidown format definition](data/examples/mankidown-format.md) in the `data/examples` directory.
+
+
 ## 2) Run mankidown
 
 Run mankidown indicating the Anki note type, the deck, and optional tags:
