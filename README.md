@@ -3,7 +3,7 @@
 
 <p align="center"><img alt="mankidown" src="data/logo.png"/></p>
 
-`mankidown` is a simple command-line tool to convert markdown documents to Anki flashcards 
+`mankidown` is a simple command-line tool to convert markdown documents to [Anki](https://apps.ankiweb.net/) flashcards 
 
 # Features 
 
