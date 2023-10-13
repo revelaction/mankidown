@@ -1,5 +1,4 @@
 # 
-
 ## Text
 
 Which mankidown flag below should you use to indicate the note type (in this case Cloze):
