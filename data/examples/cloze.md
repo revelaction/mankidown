@@ -2,7 +2,6 @@
 
 ## Text
 
-
 Which mankidown flag below should you use to indicate the note type (in this case Cloze):
 
 ```console
@@ -55,5 +54,3 @@ $ mankidown --mydeck -n Cloze {{c1::--tag mankidown --tag anki}} mynotes.md
 ## 
 
 The tag `--tag`, `-t` can be repeated.
-
-
