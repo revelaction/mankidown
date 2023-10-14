@@ -3,8 +3,8 @@
 - this is the first note
 - content after each H1 element is parsed as a note 
 - Text between H1 and H2 tags (like this) is ignored 
-- The title of the H1 tag can be used to add tags to the note separatd by spaces (here `tag1` and `tag2`) will be added to first  note
-- we are defining notes for the note-type `Basic` with `Front` and `Back` note fields
+- The title of the H1 tag can be used to add tags to the note separated by spaces (here `tag1` and `tag2`)
+- This document define notes for the Anki note-type `Basic` with `Front` and `Back` note fields
 
 ## Front
 
