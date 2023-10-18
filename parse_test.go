@@ -153,7 +153,7 @@ Text`)
 	}
 }
 
-// first note should define all note fields, shoudl no have empty H2
+// first note should define all note fields, should no have empty H2
 func TestParseNoFieldInFirstNoteH2(t *testing.T) {
 
 	withoutFields := []byte(`# note1 tag1
