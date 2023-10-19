@@ -3,7 +3,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/revelaction/mankidown)](https://pkg.go.dev/github.com/revelaction/mankidown)
 [![Test](https://github.com/revelaction/mankidown/actions/workflows/test.yml/badge.svg)](https://github.com/revelaction/mankidown/actions/workflows/test.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/revelaction/mankidown)](https://goreportcard.com/report/github.com/revelaction/mankidown)
-
+[![GitHub Release](https://img.shields.io/github/v/release/revelaction/mankidown?style=flat)]() 
 
 `mankidown` is a simple command-line tool to convert [markdown](https://commonmark.org/help/) documents to [Anki](https://apps.ankiweb.net/) flashcards 
 
