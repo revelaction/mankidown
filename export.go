@@ -54,12 +54,12 @@ func (ex *Exporter) AppendHeaders() {
 	fmt.Fprintln(ex.out, HeaderTagColumn)
 
 	// deck
-	if "" != ex.config.Deck {
+	if ex.config.Deck != "" {
 		fmt.Fprintf(ex.out, HeaderDeck, ex.config.Deck)
 	}
 
 	// notetype
-	if "" != ex.config.NoteType {
+	if ex.config.NoteType != "" {
 		fmt.Fprintf(ex.out, HeaderNoteType, ex.config.NoteType)
 	}
 
@@ -77,9 +77,7 @@ func (ex *Exporter) AppendHeaderColumns(columns []string) {
 	cols = append(cols, guidColumnName) //1)
 	cols = append(cols, tagsColumnName) //2)
 
-	for _, fieldName := range columns {
-		cols = append(cols, fieldName)
-	}
+	cols = append(cols, columns...)
 
 	c := strings.Join(cols, separatorChar)
 	fmt.Fprintf(ex.out, "#columns:%s\n", c)
@@ -87,7 +85,7 @@ func (ex *Exporter) AppendHeaderColumns(columns []string) {
 
 func buildIdField(n *Note, config *Config) string {
 
-	if "" != config.GuidPrefix {
+	if config.GuidPrefix != "" {
 		return config.GuidPrefix + n.Id()
 	}
 	return n.Id()
@@ -116,7 +114,6 @@ func (ex *Exporter) Export(notes *Notes) {
 	ex.AppendHeaders()
 	ex.AppendHeaderColumns(notes.FieldNames())
 
-	notelines := []string{}
 	for _, note := range notes.Notes {
 
 		// 1 field) id
@@ -133,6 +130,5 @@ func (ex *Exporter) Export(notes *Notes) {
 		noteline := strings.Join(fields, separatorChar)
 		fmt.Fprintf(ex.out, "%s\n", noteline)
 
-		notelines = append(notelines, noteline)
 	}
 }
