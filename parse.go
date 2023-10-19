@@ -59,9 +59,7 @@ func (n *Note) addTags(tags string) {
 
 	words := strings.Fields(tags)
 
-	for _, w := range words {
-		n.tags = append(n.tags, w)
-	}
+    n.tags = append(n.tags, words...)
 }
 
 func (n *Note) addId(id string) {
@@ -96,16 +94,16 @@ func (n *Notes) addNote(nt *Note) error {
 
 func (n *Notes) validateNote(nt *Note) error {
 
-	if 0 == nt.numFieds() {
-		return fmt.Errorf("No fields in note %d", n.numNotes()+1)
+	if nt.numFieds() == 0 {
+		return fmt.Errorf("no fields in note %d", n.numNotes()+1)
 	}
 
 	if n.numFieds() != nt.numFieds() {
-		return fmt.Errorf("Invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
+		return fmt.Errorf("invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
 	}
 
-	if "" == nt.Id() {
-		return fmt.Errorf("No notes declared at the start by parsing note %d", n.numNotes()+1)
+	if nt.Id() == "" {
+		return fmt.Errorf("no notes declared at the start by parsing note %d", n.numNotes()+1)
 	}
 
 	return nil
@@ -123,16 +121,16 @@ func (ns *Notes) addFieldName(fieldName string) error {
 
 	// after first note:
 	if ns.numNotes() > 0 {
-		if "" != fieldName {
-			return fmt.Errorf("Invalid presence of fields (%q) in note %d", fieldName, ns.numNotes()+1)
+		if fieldName != "" {
+			return fmt.Errorf("invalid presence of fields (%q) in note %d", fieldName, ns.numNotes()+1)
 		} else {
 			return nil
 		}
 	}
 
 	// first note:
-	if "" == fieldName {
-		return fmt.Errorf("Missing fields in note %d", ns.numNotes()+1)
+	if fieldName == "" {
+		return fmt.Errorf("missing fields in note %d", ns.numNotes()+1)
 	}
 
 	for _, fn := range ns.fieldNames {
@@ -213,7 +211,7 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 
 		// Render the node contents
 		if err = p.mdp.Renderer().Render(&fieldBuf, markdown, n); err != nil {
-			return ast.WalkStop, fmt.Errorf("Render error %v", err)
+			return ast.WalkStop, fmt.Errorf("render error %v", err)
 		}
 
 		return ast.WalkSkipChildren, nil
@@ -242,7 +240,7 @@ func isNoteStart(n ast.Node) bool {
 		return false
 	}
 
-	if 1 == h.Level {
+	if h.Level == 1{
 		return true
 	}
 
@@ -267,7 +265,7 @@ func isNoteEnd(n ast.Node) bool {
 	case *ast.Document:
 		return true
 	case *ast.Heading:
-		if 1 == v.Level {
+		if v.Level == 1 {
 			return true
 		}
 	}
@@ -281,7 +279,7 @@ func isFieldStart(n ast.Node) bool {
 		return false
 	}
 
-	if 2 == h.Level {
+	if h.Level == 2{
 		return true
 	}
 
@@ -310,10 +308,10 @@ func isFieldEnd(n ast.Node, inside bool) bool {
 	case *ast.Document:
 		return true
 	case *ast.Heading:
-		if 2 == v.Level {
+		if v.Level == 2 {
 			return true
 		}
-		if 1 == v.Level {
+		if v.Level == 1{
 			return true
 		}
 	}
