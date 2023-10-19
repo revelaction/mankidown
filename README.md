@@ -5,7 +5,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/revelaction/mankidown)](https://goreportcard.com/report/github.com/revelaction/mankidown)
 
 
-`mankidown` is a simple command-line tool to convert markdown documents to [Anki](https://apps.ankiweb.net/) flashcards 
+`mankidown` is a simple command-line tool to convert [markdown](https://commonmark.org/help/) documents to [Anki](https://apps.ankiweb.net/) flashcards 
 
 # Features 
 
