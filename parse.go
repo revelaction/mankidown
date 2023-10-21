@@ -3,12 +3,13 @@ package mankidown
 import (
 	"bytes"
 	"fmt"
+	"strconv"
+	"strings"
+
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/renderer/html"
 	"github.com/yuin/goldmark/text"
-	"strconv"
-	"strings"
 )
 
 type Parser struct {

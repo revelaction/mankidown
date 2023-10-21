@@ -1,8 +1,9 @@
 package mankidown_test
 
 import (
-	"github.com/revelaction/mankidown"
 	"testing"
+
+	"github.com/revelaction/mankidown"
 )
 
 func TestParseValid(t *testing.T) {
