@@ -54,12 +54,12 @@ func (ex *Exporter) Export(notes *Notes) error {
 	var out io.Writer
 	f, err := os.OpenFile(outFile, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
 	if err != nil {
-		return fmt.Errorf("failed to open output file %q: %v", f, err)
+		return fmt.Errorf("failed to open output file %q: %v", outFile, err)
 	}
 
 	defer func() {
 		if err = f.Close(); err != nil {
-			err = fmt.Errorf("failed to close output file %q: %v", f, err)
+			err = fmt.Errorf("failed to close output file %q: %v", outFile, err)
 		}
 	}()
 
