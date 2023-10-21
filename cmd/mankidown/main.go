@@ -8,13 +8,10 @@ import (
 	"io"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/revelaction/mankidown"
 )
-
-const outFileExt = ".txt"
 
 const usage = `Usage:
     mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
@@ -129,32 +126,11 @@ func main() {
 		in = f
 	}
 
-	var outFile string
-
-	if outFlag != "" {
-		outFile = outFlag
-	} else {
-		baseName := filepath.Base(inFile)
-		outFile = strings.TrimSuffix(baseName, filepath.Ext(baseName)) + outFileExt
-	}
-
 	if guidPrefix != "" {
 		conf.GuidPrefix = guidPrefix
-	} else {
-		conf.GuidPrefix = outFile
 	}
 
-	var out io.Writer
-	f, err := os.OpenFile(outFile, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0600)
-	if err != nil {
-		errorf("failed to open output file %q: %v", outFlag, err)
-	}
-	defer func() {
-		if err := f.Close(); err != nil {
-			errorf("failed to close output file %q: %v", outFlag, err)
-		}
-	}()
-	out = f
+	conf.InFile = inFile
 
 	markdown, err := io.ReadAll(in)
 	if err != nil {
@@ -167,8 +143,11 @@ func main() {
 		errorf("failed to parse input file %q: %v", inFile, err)
 	}
 
-	ex := mankidown.NewExporter(out, conf)
-	ex.Export(notes)
+	ex := mankidown.NewExporter(conf)
+	err = ex.Export(notes)
+	if err != nil {
+		errorf("failed to export file %q: %v", inFile, err)
+	}
 }
 
 // l is a logger with no prefixes.

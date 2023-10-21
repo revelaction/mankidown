@@ -59,7 +59,7 @@ func (n *Note) addTags(tags string) {
 
 	words := strings.Fields(tags)
 
-    n.tags = append(n.tags, words...)
+	n.tags = append(n.tags, words...)
 }
 
 func (n *Note) addId(id string) {
@@ -240,7 +240,7 @@ func isNoteStart(n ast.Node) bool {
 		return false
 	}
 
-	if h.Level == 1{
+	if h.Level == 1 {
 		return true
 	}
 
@@ -279,7 +279,7 @@ func isFieldStart(n ast.Node) bool {
 		return false
 	}
 
-	if h.Level == 2{
+	if h.Level == 2 {
 		return true
 	}
 
@@ -311,7 +311,7 @@ func isFieldEnd(n ast.Node, inside bool) bool {
 		if v.Level == 2 {
 			return true
 		}
-		if v.Level == 1{
+		if v.Level == 1 {
 			return true
 		}
 	}
