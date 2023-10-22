@@ -34,7 +34,7 @@ a fence code block
 - This is the Back field of the second note
 - You can use any markdown feature after each H2 element. 
 
-# tag3  
+# tag3
 
 - this is the third note
 - this note have the specific tag `tag3`

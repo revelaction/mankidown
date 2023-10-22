@@ -26,6 +26,8 @@ const (
 	tagsColumnName = "Tags"
 
 	outFileExt = ".txt"
+
+	mankidownTag = "mankidown"
 )
 
 type Config struct {
@@ -139,6 +141,7 @@ func (ex *Exporter) appendHeaderTags(out io.Writer, inFile string) {
 
 	tagsFromInFile := strings.FieldsFunc(inFile, f)
 	tags = append(tags, tagsFromInFile...)
+	tags = append(tags, mankidownTag)
 	fmt.Fprintf(out, HeaderTags, strings.Join(tags, " "))
 }
 
