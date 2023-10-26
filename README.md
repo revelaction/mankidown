@@ -22,7 +22,7 @@ On Linux, macOS, and FreeBSD and Windows you can use the [pre-built binaries](ht
 If your system has a supported version of Go, you can build from source
 
 ```console
-go install github.com/revelaction/mankidown/cmd@latest
+go install github.com/revelaction/mankidown/cmd/mankidown@latest
 ```
 
 # Usage
