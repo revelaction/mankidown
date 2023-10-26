@@ -29,9 +29,9 @@ const (
 
 	mankidownTag = "mankidown"
 
-    // Anki Import UI wants each note type field to be non empty. We allow
-    // empty fields and add emptyComment in order to fill with something
-    emptyComment = "<!---->"
+	// Anki Import UI wants each note type field to be non empty. We allow
+	// empty fields and add emptyComment in order to fill with something
+	emptyComment = "<!---->"
 )
 
 type Config struct {
@@ -85,11 +85,11 @@ func (ex *Exporter) Export(notes *Notes) error {
 		fields = append(fields, buildTagsField(note))
 
 		for _, field := range note.Fields() {
-            fields = append(fields, buildFieldAsLine(field.Html))
-        }
+			fields = append(fields, buildFieldAsLine(field.Html))
+		}
 
-        noteline := strings.Join(fields, separatorChar)
-        fmt.Fprintf(out, "%s\n", noteline)
+		noteline := strings.Join(fields, separatorChar)
+		fmt.Fprintf(out, "%s\n", noteline)
 
 	}
 
@@ -176,9 +176,9 @@ func buildFieldAsLine(html string) string {
 	// 3) delete <br> between tags
 	fieldLine = strings.Replace(fieldLine, "><br><", "><", -1)
 
-    if fieldLine == "" {
-        return emptyComment
-    }
+	if fieldLine == "" {
+		return emptyComment
+	}
 
 	return fieldLine
 }
