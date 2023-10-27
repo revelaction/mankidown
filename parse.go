@@ -3,7 +3,6 @@ package mankidown
 import (
 	"bytes"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/yuin/goldmark"
@@ -12,11 +11,15 @@ import (
 	"github.com/yuin/goldmark/text"
 )
 
+// guidPrefix is the tag prefix that, if present in the H1 header,  determines
+// the guid of the note
+const guidPrefix = "guid:"
+
 type Parser struct {
 	mdp goldmark.Markdown
 }
 
-// A Field contains the parsed html content inside a H2 Heading element
+// Field contains the parsed html content inside a H2 Heading element
 type Field struct {
 	Html string
 }
@@ -24,7 +27,7 @@ type Field struct {
 // A Note contains parsed mardown html that will be mapped to a anki note type
 // field in the output file
 type Note struct {
-	id     string
+	guid   string
 	tags   []string
 	fields []Field
 }
@@ -36,8 +39,12 @@ func newNote() *Note {
 	}
 }
 
-func (n *Note) Id() string {
-	return n.id
+func (n *Note) Guid() string {
+	return n.guid
+}
+
+func (n *Note) hasGuid() bool {
+	return n.guid != ""
 }
 
 func (n *Note) Fields() []Field {
@@ -60,14 +67,18 @@ func (n *Note) addTags(tags string) {
 
 	words := strings.Fields(tags)
 
-	n.tags = append(n.tags, words...)
+	for _, w := range words {
+		// guid
+		if strings.HasPrefix(w, guidPrefix) {
+			n.guid = strings.TrimPrefix(w, guidPrefix)
+			continue
+		}
+
+		n.tags = append(n.tags, w)
+	}
 }
 
-func (n *Note) addId(id string) {
-	n.id = id
-}
-
-// A Notes contains the parsed notes elements
+// Notes contains the parsed notes elements
 type Notes struct {
 	Notes      []*Note
 	fieldNames []string
@@ -103,8 +114,16 @@ func (n *Notes) validateNote(nt *Note) error {
 		return fmt.Errorf("invalid number of fields in note %d (want %d, have %d)", n.numNotes()+1, n.numFieds(), nt.numFieds())
 	}
 
-	if nt.Id() == "" {
-		return fmt.Errorf("no notes declared at the start by parsing note %d", n.numNotes()+1)
+	if n.numNotes() > 0 {
+		if n.hasGuids() != nt.hasGuid() {
+			return fmt.Errorf("guid mismatch for note %d", n.numNotes()+1)
+		}
+	}
+
+	if nt.hasGuid() {
+		if n.hasGuid(nt.guid) {
+			return fmt.Errorf("guid %q in note %d already exists", nt.Guid(), n.numNotes()+1)
+		}
 	}
 
 	return nil
@@ -116,6 +135,37 @@ func (n *Notes) numFieds() int {
 
 func (n *Notes) numNotes() int {
 	return len(n.Notes)
+}
+
+// hasGuids returns true if the document notes have guids. As we do not allow
+// notes in the markdown with and without guids at the same time, just checking
+// one is enough
+func (n *Notes) hasGuids() bool {
+	if n.numNotes() == 0 {
+		return false
+	}
+
+	if n.Notes[0].Guid() == "" {
+		return false
+	}
+
+	return true
+}
+
+// hasGuid return true if one of the Note of Notes has the same guid as guid.
+func (n *Notes) hasGuid(guid string) bool {
+
+	if n.numNotes() == 0 {
+		return false
+	}
+
+	for _, note := range n.Notes {
+		if note.Guid() == guid {
+			return true
+		}
+	}
+
+	return false
 }
 
 func (ns *Notes) addFieldName(fieldName string) error {
@@ -188,10 +238,6 @@ func (p *Parser) Parse(markdown []byte) (*Notes, error) {
 			if tags := string(n.Text(markdown)); tags != "" {
 				nt.addTags(tags)
 			}
-
-			// note guid suffix
-			noteNum := len(notes.Notes) + 1
-			nt.addId(strconv.Itoa(noteNum))
 
 			return ast.WalkSkipChildren, nil
 		}

@@ -5,6 +5,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"unicode"
 )
@@ -30,7 +31,8 @@ const (
 	mankidownTag = "mankidown"
 
 	// Anki Import UI wants each note type field to be non empty. We allow
-	// empty fields and add emptyComment in order to fill with something
+	// empty fields in markdown and add emptyComment in order to fill the fields
+	// with something
 	emptyComment = "<!---->"
 )
 
@@ -75,11 +77,11 @@ func (ex *Exporter) Export(notes *Notes) error {
 	ex.appendHeaderColumns(out, notes.FieldNames())
 	ex.appendHeaderTags(out, inFile)
 
-	for _, note := range notes.Notes {
+	for i, note := range notes.Notes {
 
 		// 1 field) id
 		fields := []string{}
-		fields = append(fields, ex.buildIdField(note, outFile))
+		fields = append(fields, ex.buildIdField(note, i, outFile))
 
 		// 2 field) tags
 		fields = append(fields, buildTagsField(note))
@@ -149,13 +151,17 @@ func (ex *Exporter) appendHeaderTags(out io.Writer, inFile string) {
 	fmt.Fprintf(out, HeaderTags, strings.Join(tags, " "))
 }
 
-func (ex *Exporter) buildIdField(n *Note, outFile string) string {
+func (ex *Exporter) buildIdField(n *Note, i int, outFile string) string {
 
-	if ex.config.GuidPrefix != "" {
-		return ex.config.GuidPrefix + n.Id()
+	if n.hasGuid() {
+		return n.Guid()
 	}
 
-	return outFile + n.Id()
+	if ex.config.GuidPrefix != "" {
+		return ex.config.GuidPrefix + strconv.Itoa(i)
+	}
+
+	return outFile + strconv.Itoa(i)
 }
 
 // buildTagsField builds the Tags string for a note

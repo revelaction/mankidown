@@ -262,3 +262,61 @@ func TestParseNoFieldsAfterNote(t *testing.T) {
 		t.Errorf("\ngot %s\nwant Error", err)
 	}
 }
+
+func TestParseNotesWithAndWithoutGuids(t *testing.T) {
+
+	WithAndWithout := []byte(`# note1 tag1 guid:note1
+## field1 
+
+First note has two fields, Field1 and Field2
+
+## field2 
+
+text
+
+# note2 tag2 noguid
+## 
+
+text
+
+## 
+
+Text`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(WithAndWithout)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
+
+func TestParseNotesWithDuplicateGuid(t *testing.T) {
+
+	WithAndWithout := []byte(`# note1 tag1 guid:note1
+## field1 
+
+First note has two fields, Field1 and Field2
+
+## field2 
+
+text
+
+# note2 tag2 guid:note1
+## 
+
+text
+
+## 
+
+Text`)
+
+	md := mankidown.NewParser()
+	_, err := md.Parse(WithAndWithout)
+
+	t.Logf("Error is %q", err)
+	if err == nil {
+		t.Errorf("\ngot %s\nwant Error", err)
+	}
+}
