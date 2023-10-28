@@ -173,7 +173,7 @@ $ mankidown -d myDeck -n Cloze -p myguidprefix data/examples/cloze.md
 This method is only useful if there are no or little deletion of notes in the
 document, as they will change the guid of the following notes.
 
-# Media Notes
+# Notes with media
 
 ## Images
 
