@@ -129,7 +129,7 @@ and import the .txt file in anki.
 
 ## Custom
 
-# GUID, Updating cards, duplicates
+# GUID, updating cards, duplicates
 
 mankidown makes use of the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) of the Anki import process.
 
