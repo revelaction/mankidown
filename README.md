@@ -25,6 +25,16 @@ If your system has a supported version of Go, you can build from source
 go install github.com/revelaction/mankidown/cmd/mankidown@latest
 ```
 
+# Run mankidown
+
+```console
+# convert to cards for mydeck and Basic note type
+$ mankidown --deck mydeck -n Basic mynotes.md
+
+# Also add tags to all notes
+$ mankidown --deck mydeck -n Basic -t tag1 -tag2 mynotes.md
+```
+
 # Usage
 
 ## 1) Write notes in markdown
@@ -78,7 +88,7 @@ See the [markidown format definition](data/examples/mankidown-format.md) in the 
 Run mankidown indicating the Anki note type, the deck, and optional tags:
 
 ```console
-mankidown --deck mydeck -n Basic mynotes.md
+$ mankidown --deck mydeck -n Basic mynotes.md
 ```
 
 This will produce a `mynotes.txt` file that can be imported in Anki.
@@ -119,7 +129,49 @@ and import the .txt file in anki.
 
 ## Custom
 
-# Update cards, duplicates
+# GUID, Updating cards, duplicates
+
+mankidown makes use of the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) of the Anki import process.
+
+Anki notes imported from mankidown have the Anki GUID (Globally Unique Identifier) set by mankidown.
+
+There are two ways mankidown uses to build the GUID:
+
+#### Per note GUID
+
+Each note can declare its Anki GUID in the H1 header by using the prefix `guid:` followed by the guid:
+
+```markdown
+# tag1 tag2 guid:563ho8
+## Front
+
+## Back
+```
+
+The markdown file above will produce one anki note with the guid `563ho8`.
+
+If per note GUIDs are used, all notes of the markdown file are required to have one.
+
+Per note GUIDs should be preferred.
+
+#### Position in document
+
+if there are no `guid:`s per note, mankidown will make a guid by appending a
+integer to the name of the markdown file.  That integer is just the note number
+(position) in the markdown file:
+
+```console
+mymarkdownfile0, mymarkdownfile1, mymarkdownfile2
+```
+
+It's possible to use a Guid prefix instead of the file name in the command line.
+
+```console
+$ mankidown -d myDeck -n Cloze data/examples/cloze.md 
+```
+
+This method is only useful if there are no or little deletion of notes in the
+document, as they will change the guid of the following notes.
 
 # Media
 
