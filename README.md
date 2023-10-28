@@ -156,7 +156,7 @@ Per note GUIDs should be preferred.
 
 #### Position in document
 
-if there are no `guid:`s per note, mankidown will make a guid by appending a
+if there are no `guid:`s per note, mankidown will make a guid by appending an
 integer to the name of the markdown file.  That integer is just the note number
 (position) in the markdown file:
 
@@ -167,7 +167,7 @@ mymarkdownfile0, mymarkdownfile1, mymarkdownfile2
 It's possible to use a Guid prefix instead of the file name in the command line.
 
 ```console
-$ mankidown -d myDeck -n Cloze data/examples/cloze.md 
+$ mankidown -d myDeck -n Cloze -p myguidprefix data/examples/cloze.md 
 ```
 
 This method is only useful if there are no or little deletion of notes in the
