@@ -28,9 +28,11 @@ go install github.com/revelaction/mankidown/cmd/mankidown@latest
 # Run mankidown
 
 ```console
-$ mankidown --deck mydeck -n Basic mynotes.md
+# convert to cards for mydeck and Basic note type
+mankidown --deck mydeck -n Basic mynotes.md
 
-$ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
+# Also add tags to all notes
+mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
 # Usage
@@ -51,7 +53,7 @@ What mankidown flag should you use to indicate the `note type`?
 Use the `-n, --note-type` flag:
 
 ```
- $ mankidown -n Basic mynotes.md 
+mankidown -n Basic mynotes.md 
 ```
 # anki mandidown
 ## 
@@ -63,7 +65,7 @@ What mankidown flag shoudl you use indicate the `Deck`?
 Use the `-d, --deck` flag:
 
 ```
- $ mankidown -d myDeck mynotes.md 
+mankidown -d myDeck mynotes.md 
 ```
 ````
 
@@ -86,7 +88,7 @@ See the [markidown format definition](data/examples/mankidown-format.md) in the 
 Run mankidown indicating the Anki note type, the deck, and optional tags:
 
 ```console
-$ mankidown --deck mydeck -n Basic mynotes.md
+mankidown --deck mydeck -n Basic mynotes.md
 ```
 
 This will produce a `mynotes.txt` file that can be imported in Anki.
@@ -107,20 +109,19 @@ The anki `Cloze` type has two fields: [`Text` and `Extra`](https://docs.ankiweb.
 To write a `Cloze` note just use the anki convention `{{c1::<hidden response>}}` after the `Text` H2 Heading. For example:
 
 ````markdown
-...
 # 
 ## Text
 Which mankidown flag below should you use to indicate the note type (in this case Cloze):
 
 ```console
-$ mankidown --deck mydeck --{{c1::note-type}} Cloze mynotes.md
+mankidown --deck mydeck --{{c1::note-type}} Cloze mynotes.md
 ```
 ````
 
 You can run the Cloze example file like this:
 
 ```console
- $ mankidown -d myDeck -n Cloze data/examples/cloze.md 
+mankidown -d myDeck -n Cloze data/examples/cloze.md 
 ```
 
 and import the .txt file in anki.
@@ -178,13 +179,17 @@ mankidown can generate `document tags`  and `note tags`
 
 #### Document Tags
 
-By using the `-t, --tag` flag in the command line, all notes of the markdown file will get the tags. The flag can be repeated
+By using the `-t, --tag` flag in the command line, mankidown adds the tag to
+all notes of the document. The flag can be repeated
 
 ```console
 $ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
-Additionally mankidown splits the words of the markdown document name and adds them as tags for all notes.
+Additionally mankidown splits the words of the markdown document name and adds
+them as tags for all notes. If the markdown file is called
+`english-vocabulary.md`, mankidown will add `english` and `vocabulary` to all
+notes of the file.
 
 #### Note Tags
 
