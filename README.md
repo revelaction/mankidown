@@ -101,6 +101,19 @@ In the Anki app, click the File menu and then "Import". For the desktop app:
 
 # Examples
 
+## Basic
+
+There is an [example markdown Basic file](data/examples/basic.md) in the `data/examples` directory.
+The anki `Basic` type has two fields: [`Front` and `Back`](https://docs.ankiweb.net/getting-started.html?highlight=Basic#note-types)
+
+You can run the Basic example file like this:
+
+```console
+mankidown -d myDeck --note-type Basic data/examples/basic.md 
+```
+
+and import the .txt file in anki.
+
 ## Cloze
 
 There is an [example markdown Cloze file](data/examples/cloze.md) in the `data/examples` directory.
