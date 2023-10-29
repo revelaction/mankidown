@@ -32,7 +32,7 @@ go install github.com/revelaction/mankidown/cmd/mankidown@latest
 $ mankidown --deck mydeck -n Basic mynotes.md
 
 # Also add tags to all notes
-$ mankidown --deck mydeck -n Basic -t tag1 -tag2 mynotes.md
+$ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
 # Usage
@@ -172,6 +172,34 @@ $ mankidown -d myDeck -n Cloze -p myguidprefix data/examples/cloze.md
 
 This method is only useful if there are no or little deletion of notes in the
 document, as they will change the guid of the following notes.
+
+# Tags
+
+[Anki Tags](https://docs.ankiweb.net/editing.html?highlight=tags#using-tags) are a useful way to keep your collection organized. 
+mankidown can generate `document tags`  and `note tags`
+
+#### Document Tags
+
+By using the `-t, --tag` flag in the command line, all notes of the markdown file will get the tags. The flag can be repeated
+
+```console
+$ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
+```
+
+Additionally mankidown splits the words of the markdown document name and adds them as tags for all notes.
+
+#### Note Tags
+
+The title of the H1 tag can be used to add tags to the note separated by spaces:
+
+```markdown
+# tag1 tag2
+## Front
+This is a Basic note with two tags 
+## Back
+
+the tags are `tag1` ans `tag2`
+```
 
 # Notes with media
 
