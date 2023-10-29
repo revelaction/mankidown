@@ -28,10 +28,8 @@ go install github.com/revelaction/mankidown/cmd/mankidown@latest
 # Run mankidown
 
 ```console
-# convert to cards for mydeck and Basic note type
 $ mankidown --deck mydeck -n Basic mynotes.md
 
-# Also add tags to all notes
 $ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
