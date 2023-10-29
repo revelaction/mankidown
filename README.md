@@ -26,7 +26,7 @@ If your system has a supported version of Go, you can build from source
 go install github.com/revelaction/mankidown/cmd/mankidown@latest
 ```
 
-# Run mankidown
+# Run
 
 ```console
 # convert to cards for mydeck and Basic note type
