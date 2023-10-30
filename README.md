@@ -36,7 +36,7 @@ mankidown --deck mydeck -n Basic mynotes.md
 mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
-# Usage
+# Getting started
 
 ## 1) Write notes in markdown
 
