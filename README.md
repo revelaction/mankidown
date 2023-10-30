@@ -10,7 +10,7 @@
 
 # Features 
 
-- mankidown output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html). To import the output file, click the File menu and then "Import".
+- mankidown output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html). To import the mankidown output file in Anki, click the File menu and then "Import".
 - mankidown supports the [Anki text file headers](https://docs.ankiweb.net/importing/text-files.html#file-headers) to simplify the import process.
 - mankidown renders the markdown contents as html.
 - mankidown supports per file and per note [Anki tags](https://docs.ankiweb.net/importing/text-files.html#adding-tags).
