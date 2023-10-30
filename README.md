@@ -20,7 +20,7 @@
 	- [Anki import](#3-import-the-output-file-in-anki)
 - [Examples](#examples)
 - [Guid](#guid-updating-cards-duplicates)
-- [tags](#tags)
+- [Tags](#tags)
 - [Media in notes](#media-in-notes)
 
 # Features 
