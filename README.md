@@ -209,8 +209,8 @@ It's possible to use a Guid prefix instead of the file name in the command line.
 $ mankidown -d myDeck -n Cloze -p myguidprefix data/examples/cloze.md 
 ```
 
-This method is only useful if there are no or little deletion of notes in the
-document, as they will change the guid of the following notes.
+This method is only useful if there are no (or little) deletion of notes in the
+document, as they will change the guid of all of the following notes, losing the card history.
 
 # Tags
 
