@@ -8,6 +8,8 @@
 
 `mankidown` is a simple command-line tool to convert [markdown](https://commonmark.org/help/) files to [Anki](https://apps.ankiweb.net/) flashcards 
 
+# Content
+
 - [Features](#features)
 - [Documentation](#documentation)
 - [Installation](#installation)
