@@ -157,6 +157,17 @@ and import the .txt file in anki.
 
 ## Custom
 
+There is an [example markdown Custom file](data/examples/custom.md) in the `data/examples` directory.
+The file declares a custom note type with four fields, `Text`, `Question`, `Extra` and `Source`. It also uses [per note GUID](#guid-updating-cards-duplicates).
+
+You can run the Custom example file (assumed you made a anki note type called `Custom`):
+
+```console
+mankidown -d myDeck --note-type Custom data/examples/custom.md 
+```
+
+and import the .txt file in anki.
+
 # GUID, updating cards, duplicates
 
 mankidown makes use of the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) of the Anki import process.
