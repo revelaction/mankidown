@@ -8,6 +8,15 @@
 
 `mankidown` is a simple command-line tool to convert [markdown](https://commonmark.org/help/) files to [Anki](https://apps.ankiweb.net/) flashcards 
 
+- [Features](#features)
+- [Documentation](#documentation)
+- [Installation](#installation)
+	- [Install on macOS](#install-on-macos)
+	- [Install on Linux](#install-on-linux)
+	- [Install on Windows](#install-on-windows)
+	- [Run using Docker](#run-using-docker)
+- [Getting started](#getting-started)
+
 # Features 
 
 - mankidown output is a plain text file that meet the conditions of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html). To import the mankidown output file in Anki, click the File menu and then "Import".
