@@ -13,9 +13,9 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Getting started](#getting-started)
-	- [Write notes in markdown](#Write-notes-in-markdown)
-	- [Run mankidown](#run-mankidown)
-	- [Anki import](#import-the-output-file-in-anki)
+	- [Write notes in markdown](#1-Write-notes-in-markdown)
+	- [Run mankidown](#2-run-mankidown)
+	- [Anki import](#3-import-the-output-file-in-anki)
 
 # Features 
 
