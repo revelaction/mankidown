@@ -11,11 +11,11 @@
 - [Features](#features)
 - [Documentation](#documentation)
 - [Installation](#installation)
-	- [Install on macOS](#install-on-macos)
-	- [Install on Linux](#install-on-linux)
-	- [Install on Windows](#install-on-windows)
-	- [Run using Docker](#run-using-docker)
+- [Usage](#usage)
 - [Getting started](#getting-started)
+	- [Write notes in markdown](#Write-notes-in-markdown)
+	- [Run mankidown](#run-mankidown)
+	- [Anki import](#import-the-output-file-in-anki)
 
 # Features 
 
@@ -35,7 +35,7 @@ If your system has a supported version of Go, you can build from source
 go install github.com/revelaction/mankidown/cmd/mankidown@latest
 ```
 
-# Run
+# Usage
 
 ```console
 # convert to cards for mydeck and Basic note type
