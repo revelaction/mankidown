@@ -18,7 +18,9 @@
 # 
 
 - this is the second note
+- Text between H1 and H2 tags (like this) is ignored 
 - this note have no specific tags
+- GUIDs for each note can be assigned as a normal tag with thsi format: `guid:<some-unique-id>`
 - The H2 elements titles in the second and next notes are not needed, as they can be infered from the first one.
 
 ## 
