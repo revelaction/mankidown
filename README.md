@@ -19,10 +19,9 @@
 	- [Run mankidown](#2-run-mankidown)
 	- [Anki import](#3-import-the-output-file-in-anki)
 - [Examples](#examples)
-	- [Basic](#basic)
-	- [Cloze](#cloze)
-	- [Custom](#custom)
 - [Guid](#guid-updating-cards-duplicates)
+- [tags](#tags)
+- [Media in notes](#media-in-notes)
 
 # Features 
 
@@ -234,7 +233,7 @@ This is a Basic note with two tags
 the tags are `tag1` ans `tag2`
 ```
 
-# Notes with media
+# Media in notes
 
 ## Images
 
