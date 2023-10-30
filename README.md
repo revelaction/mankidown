@@ -16,6 +16,11 @@
 	- [Write notes in markdown](#1-Write-notes-in-markdown)
 	- [Run mankidown](#2-run-mankidown)
 	- [Anki import](#3-import-the-output-file-in-anki)
+- [Examples](#examples)
+	- [Basic](#basic)
+	- [Cloze](#cloze)
+	- [Custom](#custom)
+- [Guid](#guid-updating-cards-duplicates)
 
 # Features 
 
