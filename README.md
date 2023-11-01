@@ -260,9 +260,9 @@ To incorporate image files into your notes, follow these steps:
 
 For audio files, you can follow a similar approach:
 
-Store your audio files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations) folder.
+1. Store your audio files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations) folder.
 
-In your Markdown file, employ the standard audio format without the need for specifying paths:
+2. In your Markdown file, employ the standard audio format without the need for specifying paths:
 
     ```
     [sound:mysound.mp3]
