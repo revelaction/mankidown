@@ -246,19 +246,26 @@ This allows you to tag your notes directly in your Markdown content for precise 
 
 ## Images
 
-Put the image files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations).
-In the markdown file, use the standard image format without paths:
+To incorporate image files into your notes, follow these steps:
+
+1. Place your image files in the Anki [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations) folder.
+
+2. In your Markdown file, utilize the standard image format without specifying paths:
 
     ![myimage](myimage.jpg)
 
 ## Audio
 
-Put the audio files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations).
-In the markdown file, use the standard audio format without paths:
+For audio files, you can follow a similar approach:
+
+Store your audio files in the [Anki collection.media folder](https://docs.ankiweb.net/files.html#file-locations) folder.
+
+In your Markdown file, employ the standard audio format without the need for specifying paths:
 
     [sound:mysound.mp3]
 
 # Command line options
+
 ```console
 mankidown [-d DECK] [-n NOTE-TYPE] [-n GUID-PREFIX] [-t TAG] [-o OUTPUT] INPUT
 
