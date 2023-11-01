@@ -252,7 +252,9 @@ To incorporate image files into your notes, follow these steps:
 
 2. In your Markdown file, utilize the standard image format without specifying paths:
 
+    ```
     ![myimage](myimage.jpg)
+    ```
 
 ## Audio
 
@@ -262,7 +264,9 @@ Store your audio files in the [Anki collection.media folder](https://docs.ankiwe
 
 In your Markdown file, employ the standard audio format without the need for specifying paths:
 
+    ```
     [sound:mysound.mp3]
+    ```
 
 # Command line options
 
