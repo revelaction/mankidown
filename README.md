@@ -214,26 +214,22 @@ document, as they will change the guid of all of the following notes, losing the
 
 # Tags
 
-[Anki Tags](https://docs.ankiweb.net/editing.html?highlight=tags#using-tags) are a useful way to keep your collection organized. 
+[Anki Tags](https://docs.ankiweb.net/editing.html?highlight=tags#using-tags)  offer an effective way to maintain organization within your collection.
 mankidown can generate `document tags`  and `note tags`
 
 #### Document Tags
 
-By using the `-t, --tag` flag in the command line, mankidown adds the tag to
-all notes of the document. The flag can be repeated
+You can utilize the -t or --tag flag in the command line to apply a tag to all notes within a specific document. This flag can be used multiple times to add multiple tags simultaneously. For instance:
 
 ```console
 $ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
-Additionally mankidown splits the words of the markdown document name and adds
-them as tags for all notes. If the markdown file is called
-`english-vocabulary.md`, mankidown will add `english` and `vocabulary` to all
-notes of the file.
+In addition, mankidown can automatically derive tags from the words present in the name of the Markdown document. For example, if your markdown file is named english-vocabulary.md, mankidown will automatically assign the english and vocabulary tags to all notes in that file.
 
 #### Note Tags
 
-The title of the H1 tag can be used to add tags to the note separated by spaces:
+You can assign tags to individual notes by including them in the title of the H1 tag, separated by spaces. Here's an example:
 
 ```markdown
 # tag1 tag2
@@ -243,6 +239,8 @@ This is a Basic note with two tags
 
 the tags are `tag1` ans `tag2`
 ```
+
+This allows you to tag your notes directly in your Markdown content for precise and flexible categorization.
 
 # Media in notes
 
