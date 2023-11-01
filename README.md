@@ -26,7 +26,7 @@
 # Features 
 
 - **Anki-Ready Output**: mankidown produces plain text files that conform to the requirements of the [Anki import process](https://docs.ankiweb.net/importing/text-files.html). To import your mankidown output into Anki, simply navigate to the File menu and select "Import."
-- **Support for Anki Text File Headers**: mankidown supports [Anki text file headers[(https://docs.ankiweb.net/importing/text-files.html#file-headers) to streamline the import process. 
+- **Support for Anki Text File Headers**: mankidown supports [Anki text file headers](https://docs.ankiweb.net/importing/text-files.html#file-headers) to streamline the import process. 
 - **Markdown to HTML Conversion**: mankidown effortlessly converts your markdown content into HTML, making it readable and accessible in Anki, preserving formatting and layout.
 - **Flexible Tagging**: mankidown provides support for both per-file and per-note [Anki tags](https://docs.ankiweb.net/importing/text-files.html#adding-tags). This feature allows you to categorize and organize your notes effectively.
 - **Custom Note Types**: mankidown also supports [custom Anki note types](https://docs.ankiweb.net/editing.html#adding-a-note-type). Each note type field is mapped to a markdown H2 Heading element, enabling you to create specialized notes in Anki tailored to your needs.
