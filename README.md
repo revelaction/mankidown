@@ -34,7 +34,7 @@
 
 # Installation
 
-On Linux, macOS, and FreeBSD and Windows you can use the [pre-built binaries](https://github.com/revelaction/mankidown/releases/) 
+On Linux, macOS, FreeBSD and Windows you can use the [pre-built binaries](https://github.com/revelaction/mankidown/releases/) 
 
 If your system has a supported version of Go, you can build from source
 
