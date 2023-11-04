@@ -7,7 +7,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/revelaction/mankidown?style=flat)]() 
 [![GitHub Release](https://img.shields.io/badge/built_with-Go-00ADD8.svg?style=flat)]() 
 
-`mankidown` is a simple command-line tool to convert [markdown](https://commonmark.org/help/) files to [Anki](https://apps.ankiweb.net/) flashcards 
+`mankidown` is a command-line tool to convert [markdown](https://commonmark.org/help/) files to [Anki](https://apps.ankiweb.net/) flashcards 
 
 # Content
 
