@@ -93,20 +93,12 @@ The markdown file above will create two anki cards for the `Basic` note type.
 The structure of the mankidown markdown files follows a straightforward pattern:
 
 - Each H1 Heading element serves as an individual Anki note.
-
 - Within the header line of H1 Heading elements, you can include Anki tags, separated by spaces. Anki will automatically apply these tags to the corresponding note.
-
 - H2 Heading elements are imported as Anki note type fields.
-
 - The H2 Headings of the first note should specify the Anki field to be mapped.
-
 - For subsequent notes, the H2 Headings should not include words. Instead, their Anki field is derived from the first note.
 
-This structured approach simplifies the process of organizing your notes and fields when using Mankidown with Anki.
-
-
 See the [markidown format definition](data/examples/mankidown-format.md) in the `data/examples` directory.
-
 
 ## 2) Run mankidown
 
