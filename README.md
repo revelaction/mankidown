@@ -169,17 +169,16 @@ mankidown -d myDeck --note-type Custom data/examples/custom.md
 
 and import the .txt file in anki.
 
-# GUID, updating cards, duplicates
+## Anki GUID Handling by Mankidown
 
-mankidown makes use of the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) of the Anki import process.
+mankidown employs the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) (Globally Unique Identifier) of the Anki import process to ensure organized note management.
+When Anki notes are imported from Mankidown, the Anki GUID is set by Mankidown itself.
 
-Anki notes imported from mankidown have the Anki GUID (Globally Unique Identifier) set by mankidown.
+Mankidown employs two methods to generate GUIDs:
 
-There are two ways mankidown uses to build the GUID:
+### Per-Note GUIDs
 
-#### Per note GUID
-
-Each note can declare its Anki GUID in the H1 header by using the prefix `guid:` followed by the guid:
+For precision, each note can declare its own Anki GUID in the H1 header by using the `guid:` prefix, followed by the desired GUID value:
 
 ```markdown
 # tag1 tag2 guid:563ho8
@@ -188,30 +187,27 @@ Each note can declare its Anki GUID in the H1 header by using the prefix `guid:`
 ## Back
 ```
 
-The markdown file above will produce one anki note with the guid `563ho8`.
+In this example, a single Anki note is produced with the GUID `563ho8`.
 
-If per note GUIDs are used, all notes of the markdown file are required to have one.
+If you opt for per-note GUIDs, it's essential that every note in the markdown file includes one.
 
-Per note GUIDs should be preferred.
+Per-note GUIDs are recommended for maintaining note uniqueness and ensuring smooth Anki integration.
 
-#### Position in document
+### Per-Document GUIDs
 
-if there are no `guid:`s per note, mankidown will make a guid by appending an
-integer to the name of the markdown file.  That integer is just the note number
-(position) in the markdown file:
+If individual notes within your markdown file do not include `guid:` values, mankidown will generate a GUID by appending an integer to the name of the markdown file. This integer corresponds to the note's position within the markdown file. For example:
 
 ```console
-mymarkdownfile0, mymarkdownfile1, mymarkdownfile2
+mymarkdownfile.txt0, mymarkdownfile.txt1, mymarkdownfile.txt2
 ```
 
-It's possible to use a Guid prefix instead of the file name in the command line.
+However, you have the option to utilize a GUID prefix in place of the file name when executing the command line. This can be achieved with the `-p` or `--guid-prefix` option:
 
 ```console
 $ mankidown -d myDeck -n Cloze -p myguidprefix data/examples/cloze.md 
 ```
 
-This method is only useful if there are no (or little) deletion of notes in the
-document, as they will change the guid of all of the following notes, losing the card history.
+It's important to note that this method is most effective when there are minimal to no deletions of notes in the document, as such deletions can alter the GUIDs of all subsequent notes, potentially causing loss of card history.
 
 # Tags
 
