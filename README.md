@@ -20,7 +20,7 @@
 	- [Run mankidown](#2-run-mankidown)
 	- [Anki import](#3-import-the-output-file-in-anki)
 - [Examples](#examples)
-- [Guid](#guid-updating-cards-duplicates)
+- [Guid](#anki-guid-handling-by-mankidown)
 - [Tags](#tags)
 - [Media in notes](#media-in-notes)
 
@@ -172,11 +172,11 @@ and import the .txt file in anki.
 ## Anki GUID Handling by Mankidown
 
 mankidown employs the [GUID Column](https://docs.ankiweb.net/importing/text-files.html#guid-column) (Globally Unique Identifier) of the Anki import process to ensure organized note management.
-When Anki notes are imported from Mankidown, the Anki GUID is set by Mankidown itself.
+When Anki notes are imported from mankidown, the Anki GUID is set by mankidown itself.
 
-Mankidown employs two methods to generate GUIDs:
+mankidown employs two methods to generate GUIDs:
 
-### Per-Note GUIDs
+#### Per-Note GUIDs
 
 For precision, each note can declare its own Anki GUID in the H1 header by using the `guid:` prefix, followed by the desired GUID value:
 
@@ -193,7 +193,7 @@ If you opt for per-note GUIDs, it's essential that every note in the markdown fi
 
 Per-note GUIDs are recommended for maintaining note uniqueness and ensuring smooth Anki integration.
 
-### Per-Document GUIDs
+#### Per-Document GUIDs
 
 If individual notes within your markdown file do not include `guid:` values, mankidown will generate a GUID by appending an integer to the name of the markdown file. This integer corresponds to the note's position within the markdown file. For example:
 
