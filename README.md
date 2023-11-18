@@ -219,7 +219,7 @@ mankidown can generate `document tags`  and `note tags`
 You can utilize the -t or --tag flag in the command line to apply a tag to all notes within a specific document. This flag can be used multiple times to add multiple tags simultaneously. For instance:
 
 ```console
-$ mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
+mankidown --deck mydeck -n Basic -t tag1 -t tag2 mynotes.md
 ```
 
 In addition, mankidown can automatically derive tags from the words present in the name of the Markdown document. For example, if your markdown file is named english-vocabulary.md, mankidown will automatically assign the english and vocabulary tags to all notes in that file.
