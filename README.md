@@ -98,7 +98,7 @@ The structure of the mankidown markdown files follows a straightforward pattern:
 - The H2 Headings of the first note should specify the Anki field to be mapped.
 - For subsequent notes, the H2 Headings should not include words. Instead, their Anki field is derived from the first note.
 
-See the [markidown format definition](data/examples/mankidown-format.md) in the `data/examples` directory.
+See the [mankidown format definition](https://raw.githubusercontent.com/revelaction/mankidown/master/data/examples/mankidown-format.md)) in the `data/examples` directory.
 
 ## 2) Run mankidown
 
