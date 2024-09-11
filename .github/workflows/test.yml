@@ -25,6 +25,6 @@ jobs:
       run: go test -v ./...
 
     - name: Lint
-      uses: dominikh/staticcheck-action@v1.3.0
+      uses: dominikh/staticcheck-action@v1.3.1
       with:
         install-go: false
