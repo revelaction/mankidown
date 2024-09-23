@@ -5,7 +5,8 @@
 [![Test](https://github.com/revelaction/mankidown/actions/workflows/build.yml/badge.svg)](https://github.com/revelaction/mankidown/actions/workflows/build.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/revelaction/mankidown)](https://goreportcard.com/report/github.com/revelaction/mankidown)
 [![GitHub Release](https://img.shields.io/github/v/release/revelaction/mankidown?style=flat)]() 
-[![GitHub Release](https://img.shields.io/badge/built_with-Go-00ADD8.svg?style=flat)]() 
+[![GitHub Release](https://img.shields.io/badge/built_with-Go-00ADD8.svg?style=flat)]()
+![sloc](https://sloc.xyz/github/revelaction/mankidown)
 
 **mankidown** is a command-line tool to convert [markdown](https://commonmark.org/help/) files to [Anki](https://apps.ankiweb.net/) flashcards 
 
